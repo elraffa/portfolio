@@ -26,9 +26,7 @@ $size: 20px;
 
 // Smartphones
 @include mediaSm {
-  main {
-    height: 70vh;
-  }
+
   nav.desktop {
     display: none !important;
   }
