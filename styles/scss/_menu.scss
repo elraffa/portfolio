@@ -1,16 +1,19 @@
 // Menu Overlay
 .menu-mobile {
   position: fixed;
-  top: 0;
+  top: 10;
   width: 100%;
   opacity: 0.9;
   visibility: hidden;
   color: white;
   background-color: $primary-color;
   z-index: 10;
+  transform: translate3d(0, -100%, 0);
+  @include easeOut;
 
   &.show {
     visibility: visible;
+    transform: translate3d(0, 0, 0);
   }
 
   &-close-btn {
@@ -33,13 +36,6 @@
     overflow: hidden;
     margin: 0;
     list-style: none;
-    transform: translate3d(0, -100%, 0);
-    @include easeOut;
-
-    &.show {
-      // Slide in from top
-      transform: translate3d(0, 0, 0);
-    }
   }
 }
 
