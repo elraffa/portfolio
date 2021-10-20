@@ -1,15 +1,19 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
+
+import Burger from "../components/burger";
+import MobileMenu from "../components/mobileMenu";
 import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
-import { gsap } from 'gsap'
+import { gsap } from "gsap";
 
 const name = "Fede Ruffa";
 export const siteTitle = "Full Stack Web Developer";
 
 export default function Layout({ children, home }) {
-
+  const [open, setOpen] = useState(false);
 
   return (
     <div id="main-grid">
@@ -49,81 +53,11 @@ export default function Layout({ children, home }) {
             <a href="">Contact</a>
           </nav>
         </div>
-
-        <div className="menu-btn">
-          <div className="top"></div>
-          <div className="middle"></div>
-          <div className="bottom"></div>
+        <div>
+          <Burger open={open} setOpen={setOpen} />
+          <MobileMenu open={open} setOpen={setOpen} />
         </div>
-
-        <nav className="menu-mobile">
-          <ul className="menu-mobile-nav">
-            <div className="menu-mobile-close-btn">
-              <p>x</p>
-            </div>
-            <li className="nav-item current">
-              <a href="/" className="nav-link">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/" className="nav-link">
-                About
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/" className="nav-link">
-                Portfolio
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/" className="nav-link">
-                Blog
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/" className="nav-link">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
       </header>
-      {/* <section>
-      {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-      </section> */}
       <main id="home">{children}</main>
       {!home && (
         <div className={styles.backToHome}>
