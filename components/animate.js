@@ -1,3 +1,5 @@
+// This file is for reference, we're not using it and will have to be removed
+
 console.log('This is working');
 
 const menuBtn = document.querySelector('.menu-btn');
