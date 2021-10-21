@@ -3,33 +3,32 @@ import Layout, { siteTitle } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
 import Image from "next/image";
 
+
 export default function About() {
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <>
-        <div className="title">
-          <h1 className="lg-heading animate-01">
-            Hi! I'm <span className="accent">Fede</span>.
-          </h1>
-          <h3 className="sm-heading animate-01">
-            <p>I am a self taught Full Stack Web Developer</p>
-          </h3>
-          <button className="main-btn animate-01">Check out my work</button>
-        </div>
-        { <div className="main-image animate-02">
+      <div className="about">
+      { <div className="main-image animate-02">
           <Image
             priority
             src="/images/profile-transparent.png"
             className={utilStyles.borderCircle}
-            height={350}
-            width={350}
+            height={200}
+            width={200}
             alt="profile"
           />
           </div>}
-      </>
+        <div className="title">
+          <h3 className="sm-heading">
+            <p>I am a self taught Full Stack Web Developer</p>
+          </h3>
+          <button className="sm-btn">Check out my work</button>
+
+        </div>
+      </div>
     </Layout>
   );
 }

@@ -5,6 +5,7 @@ import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { gsap } from "gsap";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Home() {
   const el = useRef();
@@ -28,7 +29,7 @@ export default function Home() {
     });
   }, []);
 
-    return (
+  return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
@@ -41,14 +42,22 @@ export default function Home() {
           <h3 className="sm-heading animate-01">
             <p>I am a self taught Full Stack Web Developer</p>
           </h3>
-          <button className="main-btn animate-01">Check out my work</button>
+          <Link href="/portfolio">
+            <a>
+              <button className="main-btn animate-01">Check out my work</button>
+            </a>
+          </Link>
+          <div className="animate-02 icon">
+            <FaLinkedin />
+            <FaGithub />
+          </div>
         </div>
         {
           <div className="main-image animate-02">
             <Image
               priority
               src="/images/profile-transparent.png"
-              className={utilStyles.borderCircle}
+              className="borderCircle"
               height={350}
               width={350}
               alt="profile"
