@@ -89,7 +89,7 @@ main {
 }
 
 .sm-heading {
-  margin-bottom: 1.938rem;
+  margin-bottom: 1.038rem;
 }
 
 .main-btn {
@@ -111,11 +111,13 @@ main {
   background-color: $primary-color;
   color: white;
   padding: 1rem 2rem;
+  margin: 1rem auto;
   border-radius: 1.225rem;
   border: 0;
   font-weight: 700;
   font-size: 0.97rem;
   cursor: pointer;
+  max-width: 15rem;
 
   &:hover {
     background-color: $secondary-color;
@@ -163,8 +165,19 @@ main {
 
 // ABOUT
 .about {
+  max-width: 46rem;
+  margin: 1rem auto;
   display: flex;
-  gap: 5rem;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+
+.about-image {
+  justify-self: center;
+  height: auto;
+  margin: 0 auto;
+
 }
 
 // BLOG

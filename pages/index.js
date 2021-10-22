@@ -48,8 +48,8 @@ export default function Home() {
             </a>
           </Link>
           <div className="animate-02 icon">
-            <FaLinkedin />
-            <FaGithub />
+            <a href="https://www.linkedin.com/in/federicoruffa"><FaLinkedin /></a>
+            <a href="https://www.github.com/elraffa"><FaGithub /></a>
           </div>
         </div>
         {
