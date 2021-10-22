@@ -14,7 +14,7 @@ export default function MobileMenu({ open, setOpen }) {
             </a>
           </li>
           <li className="nav-item">
-            <a href="/" className="nav-link">
+            <a href="/about" className="nav-link">
               About
             </a>
           </li>
@@ -29,7 +29,7 @@ export default function MobileMenu({ open, setOpen }) {
             </a>
           </li>
           <li className="nav-item">
-            <a href="/" className="nav-link">
+            <a href="/contact" className="nav-link">
               Contact
             </a>
           </li>
