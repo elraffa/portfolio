@@ -46,7 +46,9 @@ export default function Layout({ children, home }) {
             <Link href="/about">
               <a>About</a>
             </Link>
-            <a href="">Portfolio</a>
+            <Link href="/portfolio">
+              <a href="">Portfolio</a>
+            </Link>
             <Link href="/blog">
               <a>Blog</a>
             </Link>
