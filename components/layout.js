@@ -1,16 +1,16 @@
-import Head from "next/head";
-import Image from "next/image";
-import { useState } from "react";
+import Head from 'next/head';
+import Image from 'next/image';
+import { useState } from 'react';
 
-import Burger from "../components/burger";
-import MobileMenu from "../components/mobileMenu";
-import styles from "./layout.module.css";
-import utilStyles from "../styles/utils.module.css";
-import Link from "next/link";
-import { gsap } from "gsap";
+import Burger from '../components/burger';
+import MobileMenu from '../components/mobileMenu';
+import styles from './layout.module.css';
+import utilStyles from '../styles/utils.module.css';
+import Link from 'next/link';
+import { gsap } from 'gsap';
 
-const name = "Fede Ruffa";
-export const siteTitle = "Full Stack Web Developer";
+const name = 'Fede Ruffa';
+export const siteTitle = 'Full Stack Web Developer';
 
 export default function Layout({ children, home }) {
   const [open, setOpen] = useState(false);
@@ -52,7 +52,7 @@ export default function Layout({ children, home }) {
             <Link href="/blog">
               <a>Blog</a>
             </Link>
-            <a href="">Contact</a>
+            <a href="/contact">Contact</a>
           </nav>
         </div>
         <div>
