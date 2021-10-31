@@ -21,12 +21,12 @@ body {
 }
 
 a {
-  color: $secondary-color;
+  color: $primary-color;
   text-decoration: none;
 }
 
 a:hover {
-  color: $primary-color;
+  color: $primary-light;
 }
 
 h1,
@@ -59,6 +59,10 @@ h6 {
   font-size: 1.5rem;
   & a {
     color: $primary-color;
+
+    &:hover {
+      color: $primary-light;
+    }
   }
 }
 
@@ -141,7 +145,7 @@ main {
 
 .borderCircle {
   $border: 5px;
-  color: #FFF;
+  color: #fff;
   background-clip: padding-box !important; /* !importanté */
   border: solid $border transparent !important; /* !importanté */
   border-radius: 99999px;
@@ -149,7 +153,10 @@ main {
   &:before {
     content: '';
     position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: -1;
     margin: -$border !important; /* !importanté */
     border-radius: inherit !important; /* !importanté */
@@ -172,12 +179,10 @@ main {
   flex-direction: column;
 }
 
-
 .about-image {
   justify-self: center;
   height: auto;
   margin: 0 auto;
-
 }
 
 // BLOG
@@ -200,6 +205,138 @@ main {
     margin: 1rem 2rem;
   }
 }
+
+// CONTACT
+#form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  max-width: 47rem;
+  margin: 0 auto;
+}
+
+#form-container h2,
+p {
+  margin-bottom: 2rem;
+}
+
+#form-box {
+  background: #fff;
+  position: relative;
+  width: 37.5rem;
+  border-top-right-radius: 0.313rem;
+  border-top-left-radius: 0.313rem;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.1),
+    0 6px 10px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px -5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease-in-out;
+}
+
+#form-box.close {
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+  transition: 0.8s ease-in-out;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0);
+}
+
+#next-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  font-size: 40px;
+  color: $primary-color;
+  float: right;
+  cursor: pointer;
+  z-index: 2;
+
+  &:hover {
+    color: $primary-light;
+  }
+}
+
+#prev-btn {
+  position: absolute;
+  font-size: 18px;
+  left: 30px;
+  top: 12px;
+  z-index: 2;
+  color: $secondary-light;
+  float: right;
+  cursor: pointer;
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+#input-group {
+  position: relative;
+  padding: 30px 20px 20px 20px;
+  margin: 10px 60px 10px 10px;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+
+  input {
+    position: relative;
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    outline: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  #input-label {
+    position: absolute;
+    pointer-events: none;
+    top: 32px;
+    left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+  }
+
+  input:valid + #input-label {
+    top: 6px;
+    left: 42px;
+    margin-left: 0 !important;
+    font-size: 11px;
+    font-weight: normal;
+    color: $secondary-light;
+  }
+}
+
+#input-progress {
+  border-bottom: 3px solid $primary-color;
+  width: 0;
+  transition: width 0.6s ease-in-out;
+}
+
+#progress-bar {
+  position: absolute;
+  background: $secondary-color;
+  height: $progress-height;
+  transition: width 0.5s ease-in-out;
+}
+
+.error {
+  #input-progress {
+    border-color: $error;
+  }
+
+  #next-btn {
+    color: $error;
+  }
+}
+
+@media (max-width: 600px) {
+  #form-box {
+    width: 80%;
+  }
+}
+
+// FOOTER
 
 footer {
   color: #fff;
