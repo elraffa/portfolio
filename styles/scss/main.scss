@@ -21,12 +21,12 @@ body {
 }
 
 a {
-  color: $secondary-color;
+  color: $primary-color;
   text-decoration: none;
 }
 
 a:hover {
-  color: $primary-color;
+  color: $primary-light;
 }
 
 h1,
@@ -212,6 +212,13 @@ main {
   flex-direction: column;
   justify-content: top;
   align-items: center;
+  max-width: 47rem;
+  margin: 0 auto;
+}
+
+#form-container h2,
+p {
+  margin-bottom: 2rem;
 }
 
 #form-box {
@@ -310,7 +317,6 @@ main {
   position: absolute;
   background: $secondary-color;
   height: $progress-height;
-  width: 50%;
   transition: width 0.5s ease-in-out;
 }
 

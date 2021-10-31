@@ -2,3 +2,6 @@
 - about section **image to right?**
 - complete README.md
 - contact form. TUT: https://www.youtube.com/watch?v=AiTdhLc8JCo
+- BUGS:
+  - Footer is too high
+  - Input email is only valid when @ is entered. This prevents it from displaying correctly
