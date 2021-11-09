@@ -46,6 +46,8 @@ export default function ContactForm() {
     inputBox.current.className = 'error'
     for(let i = 0; i < 6; i++) {
       setTimeout(transform, shakeTime * i, ((i % 2) * 2 - 1) * 20, 0);
+      setTimeout(transform, shakeTime * 6, 0, 0);
+      inputElement.current.focus();
     }
   }
 
