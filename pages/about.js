@@ -51,18 +51,8 @@ export default function About() {
           </h3>
           <p>
             {" "}
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec
-            maximus ipsum. Aenean sed iaculis enim. Donec consequat sapien quis
-            rutrum placerat. Nam elementum venenatis eros non feugiat. Duis ac
-            massa lorem. Aliquam eros tellus, viverra ut convallis placerat,
-            ornare quis tellus. Orci varius natoque penatibus et magnis dis
-            parturient montes, nascetur ridiculus mus. Etiam ultrices, arcu ac
-            consectetur mollis, tortor sem bibendum nisl, in fermentum justo
-            turpis et nibh. Maecenas sed nisi ipsum. Sed ligula magna,
-            scelerisque id tellus vel, facilisis efficitur neque. Cras in
-            molestie felis.
+            I am a Digital Communications specialist who always loved to code and learn new languages. I have worked designing websites in Wordpress and plain HTML, CSS and JS. In the last few years I have become acquainted with new frameworks such as React, Django, Laravel
           </p>
-
           <p>
             Ut feugiat metus vel metus lobortis vehicula. Fusce nec nisi
             facilisis, laoreet turpis vitae, hendrerit purus. Nunc lacinia,
