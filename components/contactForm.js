@@ -4,13 +4,15 @@ import { FaArrowLeft, FaArrowRight, FaEnvelope } from "react-icons/fa";
 export default function ContactForm() {
   const inputElement = useRef(null);
   const inputBox = useRef(null);
+
   const [position, setPosition] = useState(0);
-  const [answer, setAnswer] = useState("");
+  const [input, setInput] = useState("");
   const questions = [
-    { question: "Enter Your Name", type: "text", answer },
-    { question: "Email", type: "email", pattern: /\S+@\S+\.\S+/, answer },
-    { question: "Your Message", type: "text", answer },
+    { question: "Enter Your Name", type: "text" },
+    { question: "Email", type: "email", pattern: /\S+@\S+\.\S+/ },
+    { question: "Your Message", type: "text" },
   ];
+  let percentage = (position * 100) / questions.length + "%";
 
   // Transform to Create Shake Motion
   function transform(x, y) {
@@ -24,17 +26,18 @@ export default function ContactForm() {
   }, [position]);
 
   const handleChange = (e) => {
-    setAnswer(e.target.value);
+    setInput(e.target.value);
   };
 
   const handleClickForward = () => {
-    questions[position].answer = answer;
+    questions[position].answer = input;
     console.log(questions[position]);
+    console.log(questions)
     validate();
   };
 
   function validate() {
-    if (!answer.match(questions[position].pattern || /.+/)) {
+    if (!input.match(questions[position].pattern || /.+/)) {
       inputFail()
     } else {
       inputPass()
@@ -53,21 +56,24 @@ export default function ContactForm() {
 
   function inputPass() {
     inputBox.current.className = ''
+    setTimeout(transform, shakeTime * 0, 0, 10);
+    setTimeout(transform, shakeTime * 1, 0, 0);
     setPosition(position + 1);
-    setAnswer("");
+    setInput("");
   }
 
   const handleClickBackward = () => {
     setPosition(position - 1);
-    setAnswer("");
+    setInput("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`The name you entered was: ${questions[0].question}`);
+    console.log(questions)
+    alert(`The name you entered was: ${questions[0].answer}`);
   };
 
-  const percentage = (position * 100) / questions.length + "%";
+
 
   // Transition Times
   const shakeTime = 100;
@@ -104,7 +110,7 @@ export default function ContactForm() {
             <input
               type={questions[position].type}
               id="input-field"
-              value={answer}
+              value={input}
               onChange={handleChange}
               required
               ref={inputElement}
