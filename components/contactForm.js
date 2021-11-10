@@ -1,5 +1,10 @@
 import { React, useState, useEffect, useRef } from "react";
-import { FaArrowLeft, FaArrowRight, FaEnvelope, FaPagelines } from "react-icons/fa";
+import {
+  FaArrowLeft,
+  FaArrowRight,
+  FaEnvelope,
+  FaPagelines,
+} from "react-icons/fa";
 
 export default function ContactForm() {
   const inputElement = useRef(null);
@@ -40,35 +45,38 @@ export default function ContactForm() {
 
   const handleSubmit = () => {
     //e.preventDefault();
-    console.log('Sending');
+    console.log("Sending");
 
     let data = {
       name: questions[0].answer,
       email: questions[1].answer,
-      msg: questions[2].answer
-    }
-    
-    fetch('/api/contact', {
-      method: 'POST',
+      msg: questions[2].answer,
+    };
+
+    fetch("/api/contact", {
+      method: "POST",
       headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
-    }).then((res) => {
-      console.log('Response received')
-      if (res.status === 200) {
-        console.log('Response succeeded!')
-        res.setHeader('Content-Type', 'application/json');
-        res.setHeader('Cache-Control', 'max-age=180000');
-        setSubmitted(true)
-        res.end(JSON.stringify(response))
-        // Actually this is ok so maybe else in inputPass needs to change
-      }
-    }).catch(error => {
-      res.json(error);
-      res.status(405).end();
-  })};
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        console.log("Response received");
+        if (res.status === 200) {
+          console.log("Response succeeded!");
+          res.setHeader("Content-Type", "application/json");
+          res.setHeader("Cache-Control", "max-age=180000");
+          setSubmitted(true);
+          res.end(JSON.stringify(res));
+          // Actually this is ok so maybe else in inputPass needs to change
+        }
+      })
+      .catch((error) => {
+        res.json(error);
+        res.status(405).end();
+      });
+  };
 
   // Validate input
   function validate() {
@@ -97,8 +105,8 @@ export default function ContactForm() {
     if (position < 2) {
       setPosition(position + 1);
     } else {
-      inputBox.current.className = 'close';
-      thankYou.current.className = 'open';
+      inputBox.current.className = "close";
+      thankYou.current.className = "open";
       handleSubmit();
     }
     setInput("");
@@ -148,10 +156,12 @@ export default function ContactForm() {
             <div id="input-progress" style={{ width: "100%" }}></div>
           </div>
           <div id="progress-bar" style={{ width: percentage }}></div>
-          
         </div>
       </form>
-      <div id="thank-you" ref={thankYou} >Thank you for your contact, {questions[0].answer}! I'll get in touch as soon as I can.</div>
+      <div id="thank-you" ref={thankYou}>
+        Thank you for your contact, {questions[0].answer}! I'll get in touch as
+        soon as I can.
+      </div>
     </div>
   );
 }
