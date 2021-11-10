@@ -4,14 +4,16 @@ import { FaArrowLeft, FaArrowRight, FaEnvelope } from "react-icons/fa";
 export default function ContactForm() {
   const inputElement = useRef(null);
   const inputBox = useRef(null);
+  const thankYou = useRef(null);
 
   const [position, setPosition] = useState(0);
   const [input, setInput] = useState("");
-  const questions = [
+  const [questions, setQuestions] = useState([
     { question: "Enter Your Name", type: "text" },
     { question: "Email", type: "email", pattern: /\S+@\S+\.\S+/ },
     { question: "Your Message", type: "text" },
-  ];
+  ]);
+
   let percentage = (position * 100) / questions.length + "%";
 
   // Transform to Create Shake Motion
@@ -32,22 +34,22 @@ export default function ContactForm() {
   const handleClickForward = () => {
     questions[position].answer = input;
     console.log(questions[position]);
-    console.log(questions)
+    console.log(questions);
     validate();
   };
 
   function validate() {
     if (!input.match(questions[position].pattern || /.+/)) {
-      inputFail()
+      inputFail();
     } else {
-      inputPass()
+      inputPass();
     }
   }
 
   function inputFail() {
-    console.log(inputBox)
-    inputBox.current.className = 'error'
-    for(let i = 0; i < 6; i++) {
+    console.log(inputBox);
+    inputBox.current.className = "error";
+    for (let i = 0; i < 6; i++) {
       setTimeout(transform, shakeTime * i, ((i % 2) * 2 - 1) * 20, 0);
       setTimeout(transform, shakeTime * 6, 0, 0);
       inputElement.current.focus();
@@ -55,10 +57,15 @@ export default function ContactForm() {
   }
 
   function inputPass() {
-    inputBox.current.className = ''
+    inputBox.current.className = "";
     setTimeout(transform, shakeTime * 0, 0, 10);
     setTimeout(transform, shakeTime * 1, 0, 0);
-    setPosition(position + 1);
+    if (position < 2) {
+      setPosition(position + 1);
+    } else {
+      inputBox.current.className = 'close';
+      thankYou.current.className = 'open';
+    }
     setInput("");
   }
 
@@ -69,11 +76,10 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(questions)
+    console.log(questions);
+    validate();
     alert(`The name you entered was: ${questions[0].answer}`);
   };
-
-
 
   // Transition Times
   const shakeTime = 100;
@@ -91,21 +97,16 @@ export default function ContactForm() {
         which is built in HTML, CSS and plain JS. I have adapted it to work with
         React and the Next.js Framework.
       </p>
-      <form onSubmit={handleSubmit}>
-        <div
-          id="form-box" ref={inputBox}>
+      <form>
+        <div id="form-box" ref={inputBox}>
           {position === 0 ? (
             <FaEnvelope id="prev-btn" />
           ) : (
             <FaArrowLeft id="prev-btn" onClick={handleClickBackward} />
           )}
-          {position < 2 ? (
-            <FaArrowRight id="next-btn" onClick={handleClickForward} />
-          ) : (
-            <button type="submit" style={{ listStyleType: "none" }}>
-              <FaArrowRight id="next-btn" />
-            </button>
-          )}
+
+          <FaArrowRight id="next-btn" onClick={handleClickForward} />
+
           <div id="input-group">
             <input
               type={questions[position].type}
@@ -119,8 +120,10 @@ export default function ContactForm() {
             <div id="input-progress" style={{ width: "100%" }}></div>
           </div>
           <div id="progress-bar" style={{ width: percentage }}></div>
+          
         </div>
       </form>
+      <div id="thank-you" ref={thankYou} >Thank you for your contact, {questions[0].answer}! I'll get in touch as soon as I can.</div>
     </div>
   );
 }
