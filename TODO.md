@@ -2,6 +2,7 @@
 - about section **image to right?**
 - complete README.md
 - contact form. TUT: https://www.youtube.com/watch?v=AiTdhLc8JCo
+- Contact Form submitting: https://medium.com/nerd-for-tech/coding-a-contact-form-with-next-js-and-nodemailer-d3a8dc6cd645
 - BUGS:
   - Footer is too high
   - Input email is only valid when @ is entered. This prevents it from displaying correctly

@@ -51,7 +51,7 @@ export default function About() {
           </h3>
           <p>
             {" "}
-            I am a Digital Communications specialist who always loved to code and learn new languages. I have worked designing websites in Wordpress and plain HTML, CSS and JS. In the last few years I have become acquainted with new frameworks such as React, Django, Laravel
+            I am a Digital Marketing specialist who always loved to code and learn new languages. I have worked designing websites in Wordpress and plain HTML, CSS and JS. In the last few years I have become acquainted with new frameworks such as React, Django, Laravel
           </p>
           <p>
             Ut feugiat metus vel metus lobortis vehicula. Fusce nec nisi
