@@ -1,5 +1,5 @@
 import { React, useState, useEffect, useRef } from "react";
-import { FaArrowLeft, FaArrowRight, FaEnvelope } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaEnvelope, FaPagelines } from "react-icons/fa";
 
 export default function ContactForm() {
   const inputElement = useRef(null);
@@ -10,7 +10,7 @@ export default function ContactForm() {
   const [input, setInput] = useState("");
   const [questions, setQuestions] = useState([
     { question: "Enter Your Name", type: "text" },
-    { question: "Email", type: "email", pattern: /\S+@\S+\.\S+/ },
+    { question: "Email", type: "text", pattern: /\S+@\S+\.\S+/ },
     { question: "Your Message", type: "text" },
   ]);
 
@@ -38,6 +38,39 @@ export default function ContactForm() {
     validate();
   };
 
+  const handleSubmit = () => {
+    //e.preventDefault();
+    console.log('Sending');
+
+    let data = {
+      name: questions[0].answer,
+      email: questions[1].answer,
+      msg: questions[2].answer
+    }
+    
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then((res) => {
+      console.log('Response received')
+      if (res.status === 200) {
+        console.log('Response succeeded!')
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Cache-Control', 'max-age=180000');
+        setSubmitted(true)
+        res.end(JSON.stringify(response))
+        // Actually this is ok so maybe else in inputPass needs to change
+      }
+    }).catch(error => {
+      res.json(error);
+      res.status(405).end();
+  })};
+
+  // Validate input
   function validate() {
     if (!input.match(questions[position].pattern || /.+/)) {
       inputFail();
@@ -46,6 +79,7 @@ export default function ContactForm() {
     }
   }
 
+  // Input empty or wrong
   function inputFail() {
     console.log(inputBox);
     inputBox.current.className = "error";
@@ -65,6 +99,7 @@ export default function ContactForm() {
     } else {
       inputBox.current.className = 'close';
       thankYou.current.className = 'open';
+      handleSubmit();
     }
     setInput("");
   }
@@ -72,13 +107,6 @@ export default function ContactForm() {
   const handleClickBackward = () => {
     setPosition(position - 1);
     setInput("");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(questions);
-    validate();
-    alert(`The name you entered was: ${questions[0].answer}`);
   };
 
   // Transition Times
