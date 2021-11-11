@@ -65,17 +65,10 @@ export default function ContactForm() {
         console.log("Response received");
         if (res.status === 200) {
           console.log("Response succeeded!");
-          res.setHeader("Content-Type", "application/json");
-          res.setHeader("Cache-Control", "max-age=180000");
           setSubmitted(true);
-          res.end(JSON.stringify(res));
           // Actually this is ok so maybe else in inputPass needs to change
         }
       })
-      .catch((error) => {
-        res.json(error);
-        res.status(405).end();
-      });
   };
 
   // Validate input
