@@ -13,3 +13,5 @@
 
 # **DONE**
 
+- DONE: contact form. TUT: https://www.youtube.com/watch?v=AiTdhLc8JCo
+- DONE: Contact Form submitting: https://medium.com/nerd-for-tech/coding-a-contact-form-with-next-js-and-nodemailer-d3a8dc6cd645
