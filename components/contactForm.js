@@ -1,10 +1,10 @@
-import { React, useState, useEffect, useRef } from "react";
+import { React, useState, useEffect, useRef } from 'react';
 import {
   FaArrowLeft,
   FaArrowRight,
   FaEnvelope,
   FaPagelines,
-} from "react-icons/fa";
+} from 'react-icons/fa';
 
 export default function ContactForm() {
   const inputElement = useRef(null);
@@ -12,14 +12,14 @@ export default function ContactForm() {
   const thankYou = useRef(null);
 
   const [position, setPosition] = useState(0);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [questions, setQuestions] = useState([
-    { question: "Enter Your Name", type: "text" },
-    { question: "Email", type: "text", pattern: /\S+@\S+\.\S+/ },
-    { question: "Your Message", type: "text" },
+    { question: 'Enter Your Name', type: 'text' },
+    { question: 'Email', type: 'text', pattern: /\S+@\S+\.\S+/ },
+    { question: 'Your Message', type: 'text' },
   ]);
 
-  let percentage = (position * 100) / questions.length + "%";
+  let percentage = (position * 100) / questions.length + '%';
 
   // Transform to Create Shake Motion
   function transform(x, y) {
@@ -31,6 +31,13 @@ export default function ContactForm() {
       inputElement.current.focus();
     }
   }, [position]);
+
+  const handleKeyUp = (e) => {
+    if (e.charCode === 13) {
+      questions[position].answer = input;
+      validate();
+    }
+  };
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -45,7 +52,7 @@ export default function ContactForm() {
 
   const handleSubmit = () => {
     //e.preventDefault();
-    console.log("Sending");
+    console.log('Sending');
 
     let data = {
       name: questions[0].answer,
@@ -53,22 +60,21 @@ export default function ContactForm() {
       msg: questions[2].answer,
     };
 
-    fetch("/api/contact", {
-      method: "POST",
+    fetch('/api/contact', {
+      method: 'POST',
       headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-    })
-      .then((res) => {
-        console.log("Response received");
-        if (res.status === 200) {
-          console.log("Response succeeded!");
-          setSubmitted(true);
-          // Actually this is ok so maybe else in inputPass needs to change
-        }
-      })
+    }).then((res) => {
+      console.log('Response received');
+      if (res.status === 200) {
+        console.log('Response succeeded!');
+        setSubmitted(true);
+        // Actually this is ok so maybe else in inputPass needs to change
+      }
+    });
   };
 
   // Validate input
@@ -83,7 +89,7 @@ export default function ContactForm() {
   // Input empty or wrong
   function inputFail() {
     console.log(inputBox);
-    inputBox.current.className = "error";
+    inputBox.current.className = 'error';
     for (let i = 0; i < 6; i++) {
       setTimeout(transform, shakeTime * i, ((i % 2) * 2 - 1) * 20, 0);
       setTimeout(transform, shakeTime * 6, 0, 0);
@@ -92,22 +98,22 @@ export default function ContactForm() {
   }
 
   function inputPass() {
-    inputBox.current.className = "";
+    inputBox.current.className = '';
     setTimeout(transform, shakeTime * 0, 0, 10);
     setTimeout(transform, shakeTime * 1, 0, 0);
     if (position < 2) {
       setPosition(position + 1);
     } else {
-      inputBox.current.className = "close";
-      thankYou.current.className = "open";
+      inputBox.current.className = 'close';
+      thankYou.current.className = 'open';
       handleSubmit();
     }
-    setInput("");
+    setInput('');
   }
 
   const handleClickBackward = () => {
     setPosition(position - 1);
-    setInput("");
+    setInput('');
   };
 
   // Transition Times
@@ -119,10 +125,10 @@ export default function ContactForm() {
       <h2>Contact me!</h2>
       <p>
         This contact Form is quite experimental. If you find any bugs please let
-        me know! It's based on Brad Traversy's{" "}
+        me know! It's based on Brad Traversy's{' '}
         <a href="https://www.youtube.com/watch?v=AiTdhLc8JCo" target="_blank">
           Fancy Form UI from Scratch
-        </a>{" "}
+        </a>{' '}
         which is built in HTML, CSS and plain JS. I have adapted it to work with
         React and the Next.js Framework.
       </p>
@@ -142,11 +148,12 @@ export default function ContactForm() {
               id="input-field"
               value={input}
               onChange={handleChange}
+              onKeyPress={handleKeyUp}
               required
               ref={inputElement}
             />
             <label id="input-label">{questions[position].question}</label>
-            <div id="input-progress" style={{ width: "100%" }}></div>
+            <div id="input-progress" style={{ width: '100%' }}></div>
           </div>
           <div id="progress-bar" style={{ width: percentage }}></div>
         </div>
