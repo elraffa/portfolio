@@ -5,7 +5,9 @@ import PortfolioItem from "../components/portfolio/portfolioItem";
 const portfolio = () => {
   return (
     <Layout>
+      <>
       <div className="portfolio">
+        
         <PortfolioItem
           title="Huerta Tips"
           imageSrc="/images/portfolio-01.png"
@@ -30,7 +32,24 @@ const portfolio = () => {
           link="https://activacreativa.herokuapp.com"
           repo=""
         />
+         <PortfolioItem
+          title="Professional MD Website"
+          imageSrc="/images/portfolio-04.png"
+          desc="A basic landing page for an MD. Integrated with Google Sheets to update news"
+          techs="HTML, CSS, JS, React.js, Gatsby.js, Google Sheets Integration"
+          link="https://www.fidelcolque.com.ar"
+          repo=""
+        />
+                 <PortfolioItem
+          title="Multiple Choice Exams"
+          imageSrc="/images/portfolio-05.png"
+          desc="An english teaching portal needed a way to automate exams. The forms are built with Bootstrap and plain PHP, connects to MySQL Database."
+          techs="HTML, CSS, JS, Bootstrap, PHP, MySQL"
+          link="https://www.ompersonal.com.ar/test"
+          repo=""
+        />
       </div>
+      </>
     </Layout>
   );
 };
