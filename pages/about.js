@@ -56,21 +56,6 @@ export default function About() {
           HTML, CSS and JS. In the last few years I have become acquainted with
           new frameworks such as React, Django, Laravel
         </p>
-        <p>
-          Ut feugiat metus vel metus lobortis vehicula. Fusce nec nisi
-          facilisis, laoreet turpis vitae, hendrerit purus. Nunc lacinia, lorem
-          eu egestas tempus, turpis elit varius leo, vel hendrerit mauris diam
-          non nulla. Vestibulum scelerisque ornare mollis. Integer maximus
-          facilisis turpis id suscipit. Class aptent taciti sociosqu ad litora
-          torquent per conubia nostra, per inceptos himenaeos. Morbi sed
-          suscipit ex. Ut convallis elit turpis, nec blandit diam ultrices
-          varius. Cras tempor lorem et odio feugiat, efficitur vehicula ante
-          commodo. Proin dignissim tortor in neque fermentum mattis. Phasellus
-          rhoncus ullamcorper sem, nec consequat quam tincidunt at. Duis maximus
-          erat lectus, ac placerat felis venenatis vitae. Phasellus pellentesque
-          cursus nulla sit amet imperdiet. Praesent rutrum sodales lacus, et
-          mattis lectus scelerisque id.{" "}
-        </p>
         <Link href="/portfolio">
           <a>
             <button className="sm-btn">Check out my work</button>
