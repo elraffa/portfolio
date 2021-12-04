@@ -53,8 +53,10 @@ export default function About() {
           {" "}
           I am a Digital Marketing specialist who always loved to code and learn
           new languages. I have worked designing websites in Wordpress and plain
-          HTML, CSS and JS. In the last few years I have become acquainted with
-          new frameworks such as React, Django, Laravel
+          HTML, CSS and JS.         
+        </p>
+        <p>
+          I started my web development journey developing marketing websites with Wordpress. In 2019 I finished the EdX Version of Hardvard's CS50 Introduction to Computer Science and discovered a passion for coding and problem solving in Python. I have since then been honing my developing skills, diving deep into JavaScript, React and databases, mainly Postgres, MySQL and MongoDB.
         </p>
         <Link href="/portfolio">
           <a>
